@@ -18,7 +18,7 @@ git status
 git show -s --format='%H %s' aefea
 ```
 
-[Ответ:](tools/png/002.png) (Команда git show -s показывает информацию о коммите без вывода diff. Формат %H %s выводит полный хеш и комментарий коммита.)
+[Ответ:](png/002.png) (Команда git show -s показывает информацию о коммите без вывода diff. Формат %H %s выводит полный хеш и комментарий коммита.)
 
 ```
 aefead2207ef7e2aa5dc81a34aedf0cad4c32545 Update CHANGELOG.md
@@ -27,13 +27,13 @@ aefead2207ef7e2aa5dc81a34aedf0cad4c32545 Update CHANGELOG.md
 
 ## 2. Какому тегу соответствует коммит 85024d3
 
-[Команда:](tools/png/004.png)
+[Команда:](png/004.png)
 
 ```
 git tag --points-at 85024d3
 ```
 
-[Ответ:](tools/png/003.png)
+[Ответ:](png/003.png) (Команда git tag --points-at показывает теги, которые указывают на конкретный коммит. На странице релиза GitHub также видно, что v0.12.23 соответствует коммиту 85024d3.)
 
 ```
 v0.12.23
@@ -42,13 +42,13 @@ v0.12.23
 
 ## 3. Сколько родителей у коммита b8d720
 
-[Команда:](tools/png/006.png)
+[Команда:](png/006.png)
 
 ```
 git show -s --format='%P' b8d720
 ```
 
-[Ответ:](tools/png/005.png)
+[Ответ:](png/005.png) (Формат %P выводит хеши родительских коммитов. Так как выведено два хеша, коммит b8d720 является merge коммитом.)
 
 ```
 56cd7859e05c36c06b56d013b55a252d0bb7e158 9ea88f22fc6269854151c571162c5bcf958bee2b
@@ -63,7 +63,7 @@ git show -s --format='%P' b8d720
 git log --format='%H %s' v0.12.23..v0.12.24
 ```
 
-[Ответ:](tools/png/007.png)
+[Ответ:](png/007.png) (Диапазон v0.12.23..v0.12.24 означает: показать коммиты, которые есть в v0.12.24, но отсутствуют в v0.12.23. На странице релиза v0.12.24 видно, что тег v0.12.24 указывает на коммит 33ff1c0)
 
 ```
 33ff1c03bb960b332be3af2e333462dde88b279e v0.12.24
@@ -80,13 +80,14 @@ dd01a35078f040ca984cdd349f18d0b67e486c35 Update CHANGELOG.md
 
 ## 5. Коммит, в котором была создана функция func providerSource
 
-[Команда:](tools/png/051.png)
+[Команда:](png/051.png)
 
 ```
 git log --reverse --format='%H %s' -S'func providerSource(' --all
 ```
 
-[Ответ:](tools/png/052.png)
+[Ответ:](png/052.png) (Ключ -S'func providerSource(' ищет коммиты, в которых изменялось количество вхождений строки func providerSource(.
+Ключ --reverse выводит найденные коммиты от старых к новым. Первый коммит в таком выводе коммит, где функция была добавлена)
 
 ```
 8c928e83589d90a031f811fae52a81be7153e82f main: Consult local directories as potential mirrors of providers
@@ -101,7 +102,7 @@ git grep -n 'func globalPluginDirs('
 git log --all --format='%H %s' -S'globalPluginDirs'
 ```
 
-[Ответ:](tools/png/011.png)
+[Ответ:](png/011.png) (Команда git log -L :globalPluginDirs:plugins.go показывает историю изменений конкретной функции globalPluginDirs в файле plugins.go. Это точнее, чем простой поиск по строке через git log -S, потому что -L отслеживает изменения именно выбранного блока кода.)
 
 ```
 7c4aeac5f30aed09c5ef3198141b033eea9912be stacks: load credentials from config file on startup (#35952)
@@ -128,7 +129,7 @@ c0b17610965450a89598da491ce9b6b5cbd6393f prevent log output during init
 git log --reverse --format='%H %an <%ae> %s' -S'func synchronizedWriters' --all
 ```
 
-[Ответ:](tools/png/012.png)
+[Ответ:](png/012.png) (Команда git log -S'func synchronizedWriters' ищет коммиты, где добавлялась или удалялась строка с определением функции. Ключ --reverse показывает историю от старых коммитов к новым, поэтому первый найденный коммит считается коммитом создания функции.)
 
 
 ```
