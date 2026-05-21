@@ -1,7 +1,7 @@
 
 # Задание. Инструменты Git
 
-[Подготовка:](tools/png/001.png)
+[Подготовка:](png/001.png)
 
 ```
 git clone https://github.com/hashicorp/terraform.git
